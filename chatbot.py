@@ -14,7 +14,7 @@ from train import (textbot, imgbot)
 class chatbot:
     def get_response(userinput):
         if userinput[:7].lower() == 'picture':
-            return imgbot.send_task_to_dream_api(prompt=userinput[8:])
+            imgbot.send_task_to_dream_api(prompt=userinput[8:])
         else:
             return textbot.test()
 

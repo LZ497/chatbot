@@ -4,7 +4,7 @@ class textbot:
 
 class imgbot:
 
-    def send_task_to_dream_api(prompt, style_id=17, target_img_path=None):
+    def send_task_to_dream_api(prompt, style_id=16, target_img_path=None):
         import requests
         import json
         import time
@@ -51,9 +51,9 @@ class imgbot:
         }})
         requests.request(
             "PUT", task_id_url, headers=HEADERS, data=put_payload)
-
         # Step 4) Keep polling for images until the generation completes
         while True:
+            print('generating a picture......')
             response_json = requests.request(
                 "GET", task_id_url, headers=HEADERS).json()
 
