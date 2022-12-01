@@ -1,15 +1,11 @@
-import numpy as np
-import tensorflow as tf
-import pickle
-from keras_preprocessing.sequence import pad_sequences
-import string
-
 class textbot:
-    enc_model= tf.keras.models.load_model("model/encoder")
-    dec_model= tf.keras.models.load_model("model/decoder")
-
-
+    
     def __init__(self,text):
+        import tensorflow as tf
+        import pickle
+        self.text = text
+        enc_model= tf.keras.models.load_model("/model/encoder")
+        dec_model= tf.keras.models.load_model("/model/decoder")
         # Initialization of variables preprocessed in model
         self.maxlen_questions =22
         self.VOCAB_SIZE =1975
@@ -19,6 +15,8 @@ class textbot:
             self.tokenizer = pickle.load(handle)
 
     def preprocess_input(self):
+        from keras_preprocessing.sequence import pad_sequences
+        import string
         s=self.text.translate(str.maketrans('', '', string.punctuation))
         tokens = s.lower().split()
         tokens_list = []
@@ -30,7 +28,8 @@ class textbot:
     
 
     def test(self):
-            
+
+        import numpy as np
         states_values = self.enc_model.predict(self.preprocess_input())
         empty_target_seq = np.zeros((1 , 1))
         empty_target_seq[0, 0] = self.tokenizer.word_index['start']
@@ -55,6 +54,7 @@ class textbot:
             states_values = [h , c] 
         decoded_translation = decoded_translation.split(' end')[0]
         return decoded_translation.lstrip().capitalize()
+
 
 class imgbot:
 
