@@ -1,6 +1,60 @@
+import numpy as np
+import tensorflow as tf
+import pickle
+from keras_preprocessing.sequence import pad_sequences
+import string
+
 class textbot:
-    def test():
-        return 'YES!'
+    enc_model= tf.keras.models.load_model("model/encoder")
+    dec_model= tf.keras.models.load_model("model/decoder")
+
+
+    def __init__(self,text):
+        # Initialization of variables preprocessed in model
+        self.maxlen_questions =22
+        self.VOCAB_SIZE =1975
+        self.maxlen_answers =172
+        self.text = text
+        with open('model/tokenizer.pickle', 'rb') as handle:
+            self.tokenizer = pickle.load(handle)
+
+    def preprocess_input(self):
+        s=self.text.translate(str.maketrans('', '', string.punctuation))
+        tokens = s.lower().split()
+        tokens_list = []
+        for word in tokens:
+            tokens_list.append(self.tokenizer.word_index[word]) 
+        return pad_sequences([tokens_list] , maxlen=self.maxlen_questions , padding='post')
+
+
+    
+
+    def test(self):
+            
+        states_values = self.enc_model.predict(self.preprocess_input())
+        empty_target_seq = np.zeros((1 , 1))
+        empty_target_seq[0, 0] = self.tokenizer.word_index['start']
+        stop_condition = False
+        decoded_translation = ''
+        
+        while not stop_condition :
+            dec_outputs , h , c = self.dec_model.predict([empty_target_seq] + states_values)
+            sampled_word_index = np.argmax(dec_outputs[0, -1, :])
+            sampled_word = None
+                
+            for word , index in self.tokenizer.word_index.items() :
+                if sampled_word_index == index :
+                    decoded_translation += f' {word}'
+                    sampled_word = word
+                
+            if sampled_word == 'end' or len(decoded_translation.split()) > self.maxlen_answers:
+                stop_condition = True
+                    
+            empty_target_seq = np.zeros((1 , 1))  
+            empty_target_seq[0 , 0] = sampled_word_index
+            states_values = [h , c] 
+        decoded_translation = decoded_translation.split(' end')[0]
+        return decoded_translation.lstrip().capitalize()
 
 class imgbot:
 

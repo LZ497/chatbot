@@ -16,7 +16,8 @@ class chatbot:
         if userinput[:7].lower() == 'picture':
             imgbot.send_task_to_dream_api(prompt=userinput[8:])
         else:
-            return textbot.test()
+            testInstance = textbot(userinput)
+            return testInstance.test()
 
         
         
