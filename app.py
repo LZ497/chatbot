@@ -1,7 +1,7 @@
 from chatbot import chatbot
 from flask import Flask, render_template, request
 
-app = Flask(__name__,template_folder='/Users/linpei/Desktop/590/chatbot/templates')
+app = Flask(__name__,template_folder='./templates')
 app.static_folder = 'static'
 
 @app.route("/")

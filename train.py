@@ -3,19 +3,17 @@ class textbot:
         return 'YES!'
 
 class imgbot:
-    import requests
-    import json
-    import time
-
-
-    BASE_URL = "https://api.luan.tools/api/tasks/"
-    HEADERS = {
-        'Authorization': 'bearer x1AcemRCQU9Jrz9A0hsWElX9TDE5eDeA',
-        'Content-Type': 'application/json'
-    }
-
 
     def send_task_to_dream_api(prompt, style_id=17, target_img_path=None):
+        import requests
+        import json
+        import time
+        from PIL import Image
+        BASE_URL = "https://api.luan.tools/api/tasks/"
+        HEADERS = {
+            'Authorization': 'bearer x1AcemRCQU9Jrz9A0hsWElX9TDE5eDeA',
+            'Content-Type': 'application/json'
+        }
         """
         Send requests to the dream API.
         prompt is the text prompt.
@@ -66,18 +64,10 @@ class imgbot:
                     "GET", response_json["result"])
                 with open("image.jpg", "wb") as image_file:
                     image_file.write(r.content)
-                    
-                print("image saved successfully :)")   
+                im = Image.open('image.jpg')
+                im.show()
                 break
 
             elif state =="failed":
                 print("generation failed :(")
                 break
-    def readimg():
-                   
-    
-        
-        # Step 5) Enjoy your beautiful artwork :3
-
-
-
