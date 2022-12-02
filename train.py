@@ -1,11 +1,13 @@
+
 class textbot:
-    
+    import tensorflow as tf
+    enc_model= tf.keras.models.load_model("model/encoder")
+    dec_model= tf.keras.models.load_model("model/decoder")
+
     def __init__(self,text):
-        import tensorflow as tf
+        
         import pickle
         self.text = text
-        enc_model= tf.keras.models.load_model("/model/encoder")
-        dec_model= tf.keras.models.load_model("/model/decoder")
         # Initialization of variables preprocessed in model
         self.maxlen_questions =22
         self.VOCAB_SIZE =1975
