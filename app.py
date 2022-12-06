@@ -11,11 +11,9 @@ def home():
 @app.route("/get")
 def get_bot_response():
     userinput = request.args.get('msg')
-    # return send_file('image.jpg', mimetype='image/gif')
     return str(chatbot.get_response(userinput))
 
 if __name__ == "__main__":
     app.run(debug=True) 
 
 ## http://localhost:5000/ 
-

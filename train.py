@@ -1,4 +1,3 @@
-
 class textbot:
     import tensorflow as tf
     enc_model= tf.keras.models.load_model("model/encoder")
@@ -56,7 +55,6 @@ class textbot:
             states_values = [h , c] 
         decoded_translation = decoded_translation.split(' end')[0]
         return decoded_translation.lstrip().capitalize()
-
 
 class imgbot:
 
@@ -118,10 +116,12 @@ class imgbot:
             if state == "completed":
                 r = requests.request(
                     "GET", response_json["result"])
-                with open("image.jpg", "wb") as image_file:
+                with open("./static/image.jpg", "wb") as image_file:
                     image_file.write(r.content)
-                im = Image.open('image.jpg')
-                im.show()
+                im = Image.open('./static/image.jpg')
+                new_image = im.resize((300, 200))
+                new_image.save('./static/image.jpg')
+                print('pop up!')
                 break
 
             elif state =="failed":
