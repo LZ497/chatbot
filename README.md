@@ -20,9 +20,15 @@ If everything goes right, go to – ``` http://localhost:5000/ ``` and enjoy cha
 
 [Download](https://www.nvidia.com/en-us/omniverse/download/) Omniverse Laucher to install Audio2Face(2021.3.2) library. 
 
-Launch the app and open a Demo Streaming Audio Scene where everything is already configured. 
+![FirstStep](picture/omniverse.jpg)
+
+Launch the app and open a Demo Streaming Audio Scene where everything is already configured.
+
+![SecondStep](picture/demo.jpg)
 
 Keep the Audio2Face demo processing and open [audiobot.ipynb](audio2face/audiobot.ipynb) file through Omniverse Laucher settings. 
+
+![ThirdStep](picture/setting.jpg)
 
 Execute codes and the Audiobot is ready to talk with you. 
 
