@@ -1,17 +1,17 @@
 # Chatbot
 
-We have implemented three basic functions in this chatbot, including text, image and vocie. Textbot and Imagebot are deployed with Flask. Audiobot is based on NVIDIA Omniverse. 
+We implemented the chatbot's three main functions: text, image, and voice. Deploy Textbot and Imagebot using Flask. Audiobot is based on NVIDIA Omniverse. 
 
 ## Deployment
 
 **Text Version** 
-As we have installed Flask, we create app.py file to generate routes for our web application, take input from html form and return response after processing chatbot. 
+As we have installed Flask, we create [app.py](app.py) file to generate routes for our web application, take input from HTML form and return response after processing chatbot. 
 
-We add two features, text and image, in chatbot.py file, and optimize index.html to perform different actions based on different input conditions. 
+We add two features, text and image, in [chatbot.py](chatbot.py) file, and optimize [index.html](templates/index.html) to perform different actions based on different input conditions. 
 
-The most important thing is that Flask load the generated image saved under the static folder. 
+The most important thing is that Flask loads the generated image saved under the [static](static/) folder. 
 
-With all settled, we need to just run the flask app using ``` python app.py ```. 
+With all settled, we need to run the flask app using ``` python app.py ```. 
 
 If everything goes right, go to – ``` http://localhost:5000/ ``` and enjoy chatbot.
 
