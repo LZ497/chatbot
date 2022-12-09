@@ -6,6 +6,8 @@ We implemented the chatbot's three main functions: text, image, and voice. Deplo
 
 **Text Version** 
 
+After saving our trained [model](model/), we used Flask to deploy our chatbot system locally.
+
 As we have installed Flask, we create [app.py](app.py) file to generate routes for our web application, take input from HTML form and return response after processing chatbot. 
 
 We add two features, text and image, in [chatbot.py](chatbot.py) file, and optimize [index.html](templates/index.html) to perform different actions based on different input conditions. 
