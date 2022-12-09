@@ -5,6 +5,7 @@ We implemented the chatbot's three main functions: text, image, and voice. Deplo
 ## Deployment
 
 **Text Version** 
+
 As we have installed Flask, we create [app.py](app.py) file to generate routes for our web application, take input from HTML form and return response after processing chatbot. 
 
 We add two features, text and image, in [chatbot.py](chatbot.py) file, and optimize [index.html](templates/index.html) to perform different actions based on different input conditions. 
@@ -16,11 +17,12 @@ With all settled, we need to run the flask app using ``` python app.py ```.
 If everything goes right, go to – ``` http://localhost:5000/ ``` and enjoy chatbot.
 
 **Audio Version** 
-Download Omniverse Laucher to install Audio2Face(2021.3.2) library. 
 
-Open the app and a Demo Streaming Audio Scene where everything is already configured. 
+[Download](https://www.nvidia.com/en-us/omniverse/download/) Omniverse Laucher to install Audio2Face(2021.3.2) library. 
 
-Keep the Audio2Face demo processing and open audiobot.ipynb file through Omniverse Laucher settings. 
+Launch the app and open a Demo Streaming Audio Scene where everything is already configured. 
+
+Keep the Audio2Face demo processing and open [audiobot.ipynb](audio2face/audiobot.ipynb) file through Omniverse Laucher settings. 
 
 Execute codes and the Audiobot is ready to talk with you. 
 
